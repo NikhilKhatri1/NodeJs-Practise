@@ -1,0 +1,9 @@
+# ignore  node_module directory
+
+node_modules/
+
+.env
+
+#other Enteries
+
+# if file is already add or untrack then
