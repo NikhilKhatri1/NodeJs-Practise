@@ -11,6 +11,8 @@ require('dotenv').config();
 
 const mongoUrl = process.env.MONGODB_url;
 
+// const mongoUrl = process.env.mongoUrl;
+
 // Set up MongoDB connection without deprecated options
 mongoose.connect(mongoUrl, {
     // The following options are no longer needed and can be removed:
