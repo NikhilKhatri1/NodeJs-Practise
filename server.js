@@ -28,7 +28,7 @@ const localAuthMiddleware = passport.authenticate('local', { session: false });
 
 // , logRequest you can use inside get 
 
-App.get('/', localAuthMiddleware, function (req, res) {
+App.get('/', function (req, res) {
     res.send('Hello World')
 })
 
@@ -46,7 +46,7 @@ App.use('/person', personRoutes)
 
 // menu Router
 const menuItem = require('./Routes/menuRoutes');
-App.use('/menu', localAuthMiddleware, menuItem)
+App.use('/menu', menuItem)
 
 
 const PORT = process.env.PORT || 4000;

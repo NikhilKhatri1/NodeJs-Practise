@@ -1,12 +1,43 @@
+<!-- <script>
+    const fetchApi = new Promise((resolve, reject) => {
+        const Api = prompt("Enter your Api");
+        if (Api === "https://fakestore") {
+            resolve("Data is found");
+        }
+        else {
+            reject("Api url not found")
+        }
+    })
+
+    fetchApi.then((response) => {
+        console.log(response);
+    })
+        .then(() => {
+            console.log("Read completed");
+        })
+        .then(() => {
+            console.log("Ready to edit")
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        .finally(() => {
+            console.log("program end")
+        })
+</script> -->
+
+<h1>Generator</h1>
+<h1>yield->[10,["delhi","hyd"],{Rate:4.2}]</h1>\
+
 <script>
-    function add(a, b) {
-        return a + b;
+    function* ReadCollection() {
+        yield 10,
+            yield ["delhi", "hyd"],
+            yield { Rate: 4.2 }
     }
-
-    function result(add) {
-        return add();
-    }
-
-    var x = add(1, 2);
-    console.log(result(x));
+    var result = ReadCollection();
+    console.log(result.next());
+    console.log(result.next());
+    console.log(result.next());
+    console.log(result.next())
 </script>
