@@ -3,35 +3,30 @@ const mongoose = require('mongoose');
 const menuItemSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     price: {
         type: Number,
-        required: true
+        required: true,
     },
     taste: {
         type: String,
-        enum: ["sweet", "spicy", "sour"],
-        required: true
+        enum: ['sweet', 'spicy', 'sour'],
+        required: true,
     },
     is_drink: {
         type: Boolean,
         default: false
     },
-    ingredient: {
+    ingredients: {
         type: [String],
         default: []
     },
     num_sales: {
         type: Number,
-        default: 0
+        default: 0,
     }
-
 })
-
-//create menu schema
-
-//intend to create model from schema defination
 
 const MenuItem = mongoose.model('MenuItem', menuItemSchema);
 

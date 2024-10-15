@@ -1,56 +1,36 @@
-const express = require('express');
-
-const App = express();
-
+const express = require('express')
+const app = express();
 const db = require('./db');
-
 require('dotenv').config();
-
-const passport = require('./Auth');
+const passport = require('./auth');
 
 const bodyParser = require('body-parser');
-App.use(bodyParser.json()) // req.body
-
-
-// middleware function
-
-const logRequest = (req, res, next) => {
-    // console.log(`[${new Date().toLocaleDateString()}] Request Mode to ${req.originalUrl}`)
-    next();  // move on to next phase
-}
-
-// passport initialize
-
-App.use(passport.initialize());
-
-//create auth
-const localAuthMiddleware = passport.authenticate('local', { session: false });
-
-// , logRequest you can use inside get 
-
-App.get('/', function (req, res) {
-    res.send('Hello World')
-})
-
-// to use in every Routes
-App.use(logRequest);
-
-
-
-
-// person Router
-const personRoutes = require('./Routes/personRoutes');
-App.use('/person', personRoutes)
-
-
-
-// menu Router
-const menuItem = require('./Routes/menuRoutes');
-App.use('/menu', menuItem)
-
-
+app.use(bodyParser.json()); // req.body
 const PORT = process.env.PORT || 4000;
 
-App.listen(PORT, () => {
-    console.log('Server is run in http://localhost:4000')
+
+// Middleware Function
+const logRequest = (req, res, next) => {
+    console.log(`[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}`);
+    next(); // Move on to the next phase
+}
+app.use(logRequest);
+
+app.use(passport.initialize());
+const localAuthMiddleware = passport.authenticate('local', { session: false })
+
+app.get('/', function (req, res) {
+    res.send('Welcome to our Hotel');
+})
+
+// Import the router files
+const personRoutes = require('./routes/personRoutes');
+const menuItemRoutes = require('./routes/menuItemRoutes');
+
+// Use the routers
+app.use('/person', personRoutes);
+app.use('/menu', menuItemRoutes);
+
+app.listen(PORT, () => {
+    console.log('listening on port 4000 http://localhost:4000');
 })

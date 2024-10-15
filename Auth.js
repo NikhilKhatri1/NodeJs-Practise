@@ -1,33 +1,24 @@
-//import passport
+// sets up Passport with a local authentication strategy, using a Person model for user data. - Auth.js file
+
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const Person = require('./models/Person'); // Adjust the path as needed
 
-//import person schema
-const person = require('./Models/person');
-
-const localStrategy = require('passport-local').Strategy;
-
-passport.use(new localStrategy(async (username, password, done) => {
-    // authenticationlogic here
+passport.use(new LocalStrategy(async (username, password, done) => {
     try {
+        // console.log('Received credentials:', username, password);
+        const user = await Person.findOne({ username });
+        if (!user)
+            return done(null, false, { message: 'Incorrect username.' });
 
-        /* console.log(("Recieved Credential", USERNAME, password)); */
-        const user = await person.findOne({ userName: username });
-        if (!user) {
-            // done is callback function that is provided by 
-            // Passport to signal the completion of an authentication attempt.
-            return done(null, false, { message: 'Incorrect user name.' })
-        }
         const isPasswordMatch = await user.comparePassword(password);
-        if (isPasswordMatch) {
-            return done(null, user)
-        } else {
-            return done(null, false, { message: "Invalid user Password" })
-        }
+        if (isPasswordMatch)
+            return done(null, user);
+        else
+            return done(null, false, { message: 'Incorrect password.' })
+    } catch (error) {
+        return done(error);
     }
-    catch (err) {
-        return done(err);
-    }
+}));
 
-}))
-
-module.exports = passport;
+module.exports = passport; // Export configured passport
