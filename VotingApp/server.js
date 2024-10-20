@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());  // req.body
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 
 app.get("/signup", (req, res) => {
@@ -14,5 +14,5 @@ app.get("/signup", (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log("Server is Ready at http://localhost:4000");
+    console.log("Server is Ready at http://localhost:5000");
 });
