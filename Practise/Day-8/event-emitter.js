@@ -20,17 +20,45 @@
 
 // --------------------------------------------------------------------------------------
 
-const EventEmitter = require("events");
+// multiple event listener
+
+// const eventEmitter = require("events")
+
+// class MyEmitter extends eventEmitter { }
+
+// const myEmitter = new MyEmitter();
+
+// // adding multiple listener
+
+// myEmitter.on("greet", (name) => {
+//     console.log(`Hello!, ${name}`)
+// })
+
+// myEmitter.on("greet", (name) => {
+//     console.log(`Welcome!, ${name}`)
+// })
 
 
-const myEventEmitter = new EventEmitter();
-
-// register a listener
-// on -trigger the event 
-myEventEmitter.on("greet", (name) => {
-    console.log(`Hello ${name}`);
-});
+// // adding Event
+// myEmitter.emit('greet', 'Alice');
 
 
-// emit is to call the evetn 
-myEventEmitter.emit("greet", "Alice");
+
+//---------------------------------------------------------------
+
+// simple EventEmitter
+
+const eventEmitter = require("events");
+
+const myEmitter1 = new eventEmitter();
+
+myEmitter1.on("message", (name) => {
+    console.log(`Hello!, ${name}`);
+})
+
+myEmitter1.once('myMessage', (name) => {
+    console.log(`Welcome!, ${name}`);
+})
+
+myEmitter1.emit('message', 'John');
+myEmitter1.emit('myMessage', 'Bob');
