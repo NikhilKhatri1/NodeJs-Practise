@@ -14,15 +14,20 @@ let books = [
     { id: 4, title: 'book 4' }
 ];
 
-// get all books
 // intro route
+
 app.get('/', (req, res) => {
     res.json({ message: "Welcome to our Bookstor Api" });
 });
 
+// get all books
+
 app.get('/get-books', (req, res) => {
     res.json(books)
 });
+
+
+//get specified book
 
 app.get('/get-books/:id', (req, res) => {
     const book = books.find(item => item.id === parseInt(req.params.id));
