@@ -61,11 +61,24 @@ async function runQueryExample() {
         // console.log(selectedField);
 
         // limit the data also skip document (user:Alice)
-        const limitedUser = await User.find().limit(5).skip(1);
-        console.log(limitedUser);
+        // const limitedUser = await User.find().limit(5).skip(1);
+        // console.log(limitedUser);
+
         //sorting by age (descending Order)
-        const SortingUserByAge = await User.find().sort({ age: -1 });
-        console.log(SortingUserByAge);
+        // const SortingUserByAge = await User.find().sort({ age: -1 });
+        // console.log(SortingUserByAge);
+
+        //sorting by age (ascending Order)
+        // const SortingUserByAge = await User.find().sort({ age: 1 });
+        // console.log(SortingUserByAge);
+
+        // count number of documents (All document number = 3)
+        // const countDocuments = await User.countDocuments({});
+        // console.log(countDocuments);
+
+        // count number of documents on (Condition)
+        // const countDocuments = await User.countDocuments({ isActive: true });
+        // console.log(countDocuments);
 
     } catch (error) {
         console.log(error);
