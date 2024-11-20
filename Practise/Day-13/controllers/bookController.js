@@ -25,7 +25,8 @@ const getBook = async (req, res) => {
         const bookDetailsById = await Book.findById(getCurrentBookId)
         if (!bookDetailsById) {
             return res.status(404).json({ success: false, message: "invalid Id" })
-       ';' } else {
+            ';'
+        } else {
             res.status(200).json({ success: true, data: bookDetailsById })
         }
     } catch (error) {
@@ -51,11 +52,32 @@ const addNewBook = async (req, res) => {
 }
 
 const updateBook = async (req, res) => {
-
+    try {
+        const getBookId = req.params.id;
+        const updatedBookFormData = req.body;
+        const updatedBook = await Book.findByIdAndUpdate(getBookId, updatedBookFormData, { new: true })
+        if (!updatedBook) {
+            return res.status(404).json({ success: false, message: "Book not found" })
+        }
+        res.status(200).json({ success: true, message: 'Book is updated Successfully', updatedBook })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: 'Something went wrong! Please try Again' })
+    }
 }
 
 const deleteBook = async (req, res) => {
-
+    try {
+        const getBookId = req.params.id;
+        const deletedBook = await Book.findByIdAndDelete(getBookId)
+        if (!deletedBook) {
+            return res.status(404).json({ success: false, message: "Book not found" })
+        }
+        res.status(200).json({ success: true, message: 'Book is deleted Successfully', deletedBook })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: 'Something went wrong! Please try Again' })
+    }
 }
 
 module.exports = {
