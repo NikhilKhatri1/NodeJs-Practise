@@ -54,6 +54,7 @@ const addNewBook = async (req, res) => {
 const updateBook = async (req, res) => {
     try {
         const getBookId = req.params.id;
+        // console.log(getBookId);
         const updatedBookFormData = req.body;
         const updatedBook = await Book.findByIdAndUpdate(getBookId, updatedBookFormData, { new: true })
         if (!updatedBook) {

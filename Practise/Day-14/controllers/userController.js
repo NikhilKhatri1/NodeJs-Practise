@@ -49,8 +49,43 @@ const addUser = async (req, res) => {
     }
 }
 
+// update user data
+
+const updateUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const updateUserData = req.body;
+        const updatedUser = await UserDetails.findByIdAndUpdate(userId, updateUserData);
+
+        if (!updatedUser) {
+            res.status(404).json({ success: false, message: 'User not found' });
+            console.log('User not found')
+        }
+        res.status(200).json({ success: true, message: 'User data is Updated successfully', data: updatedUser })
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Something went wrong" })
+        console.log(error)
+    }
+}
+const deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const deletedUser = await UserDetails.findByIdAndDelete(userId)
+        if (!deletedUser) {
+            res.status(404).json({ success: false, message: 'user not found' })
+            console.log('user not found');
+        }
+        res.status(200).json({ success: true, message: 'user deleted successfully', data: deletedUser })
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Something went wrong" })
+        console.log(error)
+    }
+}
+
 module.exports = {
     allUserData,
     addUser,
-    getUser
+    getUser,
+    updateUser,
+    deleteUser
 }
