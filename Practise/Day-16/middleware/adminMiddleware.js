@@ -1,5 +1,4 @@
 
-
 // check for user is admin or not
 
 const isAdminUser = (req, res, next) => {
