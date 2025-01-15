@@ -1,9 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
-const dataFolder = path.join(__dirname,'data');
+const dataFolder = path.join(__dirname, 'data');
 
-if(!fs.existsSync(dataFolder)){
+if (!fs.existsSync(dataFolder)) {
     fs.mkdirSync(dataFolder);
     console.log('Folder is Created...')
 }
+
+const filePath = path.join(dataFolder, 'example.txt');
+// sync way of creating the file
+
+fs.writeFileSync(filePath, 'Hello from Node js');
+console.log('File Created Successfully!');
