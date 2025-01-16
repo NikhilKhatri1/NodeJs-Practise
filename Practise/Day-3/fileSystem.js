@@ -13,3 +13,8 @@ const filePath = path.join(dataFolder, 'example.txt');
 
 fs.writeFileSync(filePath, 'Hello from Node js');
 console.log('File Created Successfully!');
+
+// read the content from the file...
+
+const readContentFromFile = fs.readFileSync(filePath, 'utf8');
+console.log('File Content: ', readContentFromFile)
