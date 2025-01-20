@@ -18,3 +18,10 @@ console.log('File Created Successfully!');
 
 const readContentFromFile = fs.readFileSync(filePath, 'utf8');
 console.log('File Content: ', readContentFromFile)
+
+// add new line in existing file
+
+fs.appendFileSync(filePath, '\n New Line Added.');
+
+console.log("New File Updated");
+
