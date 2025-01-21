@@ -1,22 +1,56 @@
-// Import Files/Libraries
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
-const MONGODB_CONNECTION = require("./database/db.js")
+/**
+ * Node Modules
+ */
+const express = require('express');
+const connectDb = require('./database/db');
+require('dotenv').config();
+const cors = require('cors');
+const { bookRoute } = require('./routes/bookRoutes');
 
-const PORT = process.env.PORT;
-// using variable "app" to have functionality of express;
+/**
+ * Using express as app
+ */
 const app = express();
 
-// to convert everything in json format
+/**
+ * Importing Port from .env
+ */
+const port = process.env.Port;
+
+/**
+ * Converting Data in JSON Format
+ */
 app.use(express.json());
 
+/**
+ * Cors to Connect with Client
+ */
 app.use(cors({
-    origin: ""
-}))
+    origin: 'http://localhost:5173',
+    methods: '*'
+}));
 
+/**
+ * Connecting to DB
+ */
+connectDb();
 
-app.listen(PORT, () => {
-    console.log(`Server started at http://localhost:${PORT}`)
+/**
+ * Http Method
+ */
+app.get('/', (req, res) => {
+    res.send('Home');
+});
+
+/**
+ * Routes
+ */
+
+app.use('/api', bookRoute);
+
+/**
+ * Server Listen
+ */
+app.listen(port, () => {
+    console.log(`Server Started at http://localhost:${port}`);
 })
-
