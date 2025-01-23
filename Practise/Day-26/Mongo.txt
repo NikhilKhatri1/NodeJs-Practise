@@ -1,0 +1,198 @@
+MongoDB Syllabus
+1. Introduction to MongoDB
+
+    What is MongoDB?
+
+    NoSQL vs SQL databases
+
+    MongoDB use cases and advantages
+
+    MongoDB architecture (databases, collections, documents)
+
+    JSON and BSON formats
+
+    Installing MongoDB (local setup and cloud options like MongoDB Atlas)
+
+2. MongoDB Basics
+
+    MongoDB shell and commands
+
+    Creating and managing databases
+
+    Creating and managing collections
+
+    CRUD operations:
+
+        Inserting documents (insertOne, insertMany)
+
+        Querying documents (find, findOne)
+
+        Updating documents (updateOne, updateMany, replaceOne)
+
+        Deleting documents (deleteOne, deleteMany)
+
+    Data types in MongoDB
+
+    Importing and exporting data (mongoimport, mongoexport)
+
+3. Querying Data
+
+    Basic queries with find
+
+    Query operators:
+
+        Comparison operators ($eq, $ne, $gt, $lt, etc.)
+
+        Logical operators ($and, $or, $not, $nor)
+
+        Array operators ($in, $nin, $all, $elemMatch)
+
+        Element operators ($exists, $type)
+
+    Projection in queries
+
+    Sorting and limiting results (sort, limit, skip)
+
+    Aggregation pipeline basics ($match, $group, $sort, etc.)
+
+4. Indexing and Performance Optimization
+
+    What are indexes and why are they important?
+
+    Types of indexes (single field, compound, multikey, text, geospatial, etc.)
+
+    Creating and managing indexes
+
+    Indexing strategies and best practices
+
+    Using explain to analyze query performance
+
+    Covered queries and index intersection
+
+5. Aggregation Framework
+
+    Introduction to the aggregation pipeline
+
+    Stages in the aggregation pipeline:
+
+        $match, $group, $sort, $project, $unwind, $lookup, etc.
+
+    Using expressions and operators in aggregation
+
+    Aggregation pipeline optimization
+
+    Map-reduce (legacy) vs aggregation pipeline
+
+6. Data Modeling in MongoDB
+
+    Relational vs document data modeling
+
+    Embedding vs referencing documents
+
+    Schema design patterns:
+
+        One-to-one, one-to-many, many-to-many relationships
+
+        Polymorphic schemas
+
+        Bucket pattern, subset pattern, etc.
+
+    Schema validation and constraints
+
+7. Advanced MongoDB Features
+
+    Transactions in MongoDB
+
+    Replication and high availability:
+
+        Replica sets and their configuration
+
+        Failover and election process
+
+    Sharding and horizontal scaling:
+
+        Shard keys and chunk distribution
+
+        Config servers and query routers
+
+    Geospatial queries and indexes
+
+    Full-text search with MongoDB
+
+8. MongoDB Security
+
+    Authentication and authorization
+
+    Role-based access control (RBAC)
+
+    Encryption at rest and in transit
+
+    Network security and firewalls
+
+    Auditing and logging
+
+9. MongoDB Tools and Integrations
+
+    MongoDB Compass (GUI tool)
+
+    MongoDB Atlas (cloud database service)
+
+    MongoDB Charts (data visualization)
+
+    MongoDB Connector for BI
+
+    MongoDB with programming languages (Node.js, Python, Java, etc.)
+
+    Using MongoDB with frameworks (Express.js, Django, Spring Boot, etc.)
+
+10. MongoDB Administration
+
+    Backup and restore strategies (mongodump, mongorestore)
+
+    Monitoring and profiling
+
+    Performance tuning and optimization
+
+    Upgrading MongoDB
+
+    Managing storage engines (WiredTiger, in-memory, etc.)
+
+11. Real-World Applications and Projects
+
+    Building a REST API with MongoDB
+
+    Building a full-stack application (MERN stack: MongoDB, Express.js, React, Node.js)
+
+    Data analytics with MongoDB aggregation
+
+    Migrating from SQL to MongoDB
+
+    Case studies of MongoDB in production
+
+12. Best Practices and Troubleshooting
+
+    Common pitfalls and how to avoid them
+
+    Debugging slow queries
+
+    Schema design best practices
+
+    Scaling strategies for large datasets
+
+    Community resources and support
+
+Learning Resources
+
+    Official MongoDB Documentation: https://www.mongodb.com/docs/
+
+    MongoDB University: Free online courses https://university.mongodb.com/
+
+    Books:
+
+        MongoDB: The Definitive Guide by Shannon Bradshaw et al.
+
+        MongoDB in Action by Kyle Banker
+
+    YouTube tutorials and blogs
+
+This syllabus can be adjusted based on your learning goals, whether you're focusing on development, administration, or data analysis with MongoDB. Let me know if you'd like more details on any specific topic!
