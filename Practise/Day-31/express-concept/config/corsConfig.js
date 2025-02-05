@@ -37,4 +37,4 @@ const configureCors = () => {
     })
 }
 
-module.exports = configureCors
+module.exports = configureCors;

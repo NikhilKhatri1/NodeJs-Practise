@@ -1,9 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const { configureCors } = require('./config/corsConfig');
 const { requestLogger, addTimeStamp } = require('./middleware/customMiddleware');
-const { globalErrorHandle } = require('./middleware/errorHandler')
-
+const { globalErrorHandler } = require('./middleware/errorHandler.js');
+const { urlVersioning } = require('./middleware/apiVersioning');
+const createBasicRateLimiter = require('./middleware/rateLimiter');
+const itemRoutes = require('./routes/item-routes.js');
+const configureCors = require('./config/corsConfig.js');
 
 const app = express();
 
@@ -15,13 +17,22 @@ app.use(addTimeStamp);
 
 // express middleware
 app.use(configureCors());
+
+// rate limiter in api
+app.use(createBasicRateLimiter(100, 15 * 60 * 1000));   // for 15 min
+
+
+// parsing json
+
 app.use(express.json());
 
-app.use(globalErrorHandle);
 
-app.get('/', (req, res) => {
-    res.send('Welcome to Advance Nodejs Concept')
-});
+// api versioning
+app.use(urlVersioning('v1'));
+app.use('/api/v1', itemRoutes);
+
+// handle error
+app.use(globalErrorHandler);
 
 
 

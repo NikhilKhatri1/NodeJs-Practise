@@ -9,17 +9,17 @@ class APIError extends Error {
 }
 
 // created async Promise Handle to return only error
-const asynHandler = (fn) => (req, res, next) => {
+const asyncHandler = (fn) => (req, res, next) => {
     Promise.resolve(fn(req, res, next)).catch(next);
 }
 
-const globalErrorHandle = (err, req, res, next) => {
+const globalErrorHandler = (err, req, res, next) => {
     console.error(err.stack);   //log the error stack
 
     if (err instanceof APIError) {
-        return res, status(err.statusCode).json({
+        return res.status(err.statusCode).json({
             status: 'Error',
-            message: err.message
+            message: err.message,
         })
     }
     // handle mongoose validation
@@ -40,6 +40,6 @@ const globalErrorHandle = (err, req, res, next) => {
 
 module.exports = {
     APIError,
-    globalErrorHandle,
-    asynHandler
+    globalErrorHandler,
+    asyncHandler
 }
