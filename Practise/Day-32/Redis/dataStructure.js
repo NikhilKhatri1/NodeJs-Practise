@@ -33,6 +33,19 @@ async function RedisDataStructure() {
         //         Lrange(retrieve element from the specific element from list)
         //         LPOP(Remove and return start element)
         //         RPOP(Remove and return end Element)
+
+        // await client.lPush("notes", ["note 1", "note 2", "note 3"]);
+        // get value using lRange("key",startIndex,endIndex);
+        const extractNotes = await client.lRange("notes", 0, -1);
+        console.log("Notes values = ", extractNotes);
+        // delete the key(notes) bcz its incrmentting every execution...
+        // await client.del("notes");
+        // pop First Element from list
+        const PopFirstNote = await client.lPop("notes");
+        console.log("Pop first Note = ", PopFirstNote);
+        // dispplay all remaining element
+        const RemainingNotes = await client.lRange("notes", 0, -1);
+        console.log("Remaining Elements = ", RemainingNotes);
     } catch (e) {
         console.error(e)
 
