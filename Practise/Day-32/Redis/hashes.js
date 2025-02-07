@@ -12,7 +12,7 @@ client.on('error', (error) => {
 const hashing = async () => {
     try {
         // create Connection using Redise
-        client.connect();
+        await client.connect();
         console.log('Connected to Redis');
 
         // hashes -> HSET, HGET, HGETALL, HDEL
