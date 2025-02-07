@@ -11,7 +11,7 @@ client.on('error', (error) => {
 
 async function SortedSet() {
     try {
-        client.connect();
+        await client.connect();
         console.log('Connected to Redis');
 
         // Sorted Set -> ZADD, ZRANGE, ZRANK, ZREM
@@ -41,7 +41,7 @@ async function SortedSet() {
         const getCartItem = await client.zRank("cart", "cart 2");
         // return position / index  // 2
         console.log("Particular Item = ", getCartItem);
-        
+
     } catch (error) {
         console.log('Error in Redis ', error)
     } finally {
