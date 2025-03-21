@@ -1,0 +1,4 @@
+{"level":"info","message":"Server running on port 3000"}
+{"level":"warn","message":"Login failed for non-existent user: john_doe"}
+{"level":"info","message":"User registered: john_doe"}
+{"level":"info","message":"User logged in: john_doe"}
