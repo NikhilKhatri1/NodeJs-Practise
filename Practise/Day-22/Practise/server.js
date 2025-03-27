@@ -1,3 +1,7 @@
+// Router in nodejs
+const { userRouter } = require("./routes/userRoutes.js");
+
+
 const express = require("express");
 require("dotenv").config();
 
@@ -9,11 +13,16 @@ app.use(express.json());
 const PORT = process.env.PORT;
 // Database Connection 
 const connectDb = require("./db/db.js");
+
+
 connectDb();
 
 app.get("/", (req, res) => {
     res.send("Home");
 });
+
+
+app.use("/user/api", userRouter)
 
 
 app.listen(PORT, () => {
